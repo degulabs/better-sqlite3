@@ -22,7 +22,8 @@ jobs:
         os:
           - ubuntu-20.04
           - macos-latest
-          - windows-2019
+          # We are not interested in Windows builds, so let's save up some compute.
+          # - windows-2019
         node:
           - 18
           - 20
@@ -53,7 +54,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org
-      - run: npm publish
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
